@@ -1,0 +1,28 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.12.35527.113
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TaskHub", "TaskHub\TaskHub.csproj", "{9DB9C77B-D06B-4244-A9E5-456432D4E904}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TaskHub.Tests", "TaskHub.Tests\TaskHub.Tests.csproj", "{329F49E6-E7F7-4E5C-9674-C92BE273D2A5}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{9DB9C77B-D06B-4244-A9E5-456432D4E904}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{9DB9C77B-D06B-4244-A9E5-456432D4E904}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{9DB9C77B-D06B-4244-A9E5-456432D4E904}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{9DB9C77B-D06B-4244-A9E5-456432D4E904}.Release|Any CPU.Build.0 = Release|Any CPU
+		{329F49E6-E7F7-4E5C-9674-C92BE273D2A5}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{329F49E6-E7F7-4E5C-9674-C92BE273D2A5}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{329F49E6-E7F7-4E5C-9674-C92BE273D2A5}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{329F49E6-E7F7-4E5C-9674-C92BE273D2A5}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal
