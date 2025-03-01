@@ -7,8 +7,8 @@ TaskHub/migrations/
 .idea/
 
 # Ignorowanie plików build, bin, obj
-/bin/
-/obj/
+**/bin/
+**/obj/
 
 # Ignorowanie plików systemowych
 Thumbs.db
