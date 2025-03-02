@@ -16,12 +16,14 @@ namespace TaskHub.Services
         private readonly TaskHubContext _context;
         private readonly ILogger<TaskService> _logger;
 
-        public TaskService(TaskHubContext context, ILogger<TaskService> logger) { 
+        public TaskService(TaskHubContext context, ILogger<TaskService> logger)
+        { 
             _context = context;
             _logger = logger;
         }
 
-        public async Task<bool> DeleteTaskFromUser(string userName, int taskId){
+        public async Task<bool> DeleteTaskFromUser(string userName, int taskId)
+        {
             _logger.LogDebug("Removing task:{taskid} from user {userName}", userName, taskId);
 
             var userProfile = await _context.UserProfiles
@@ -40,7 +42,8 @@ namespace TaskHub.Services
             return true;
         }
 
-        public async Task<bool> DeleteTaskWithAllRelations(int taskId){
+        public async Task<bool> DeleteTaskWithAllRelations(int taskId)
+        {
             _logger.LogDebug("Deleting task: {taskId}", taskId);
 
             var task = await _context.TaskTodos
@@ -61,7 +64,8 @@ namespace TaskHub.Services
             return true;
         }
 
-        public async Task<IEnumerable<TaskTodo>> GetTasksByUser(string userName){
+        public async Task<IEnumerable<TaskTodo>> GetTasksByUser(string userName)
+        {
             _logger.LogDebug("Fetching tasks for user: {userName}", userName);
 
             return await _context.TaskTodos
@@ -70,7 +74,8 @@ namespace TaskHub.Services
                 .ToListAsync();
         }
 
-        public async Task<TaskTodo?> PostNewTask(TaskTodoDto newTaskTodo){
+        public async Task<TaskTodo?> PostNewTask(TaskTodoDto newTaskTodo)
+        {
             _logger.LogDebug("Creating new task: {newTaskTodo}", newTaskTodo);
 
             if (newTaskTodo == null || string.IsNullOrWhiteSpace(newTaskTodo.Name)){
@@ -89,7 +94,8 @@ namespace TaskHub.Services
             return task;
         }
 
-        public async Task<bool> PutTaskToUser(string userName, int taskId){
+        public async Task<bool> PutTaskToUser(string userName, int taskId)
+        {
             _logger.LogDebug("Connecting user {userName} with {taskid}", userName, taskId);
 
             var userProfile = await _context.UserProfiles
@@ -109,7 +115,8 @@ namespace TaskHub.Services
             return true;
         }
 
-        public async Task<TaskTodo?> UpdateTaskPartial(int id, TaskTodoDto partialDto){
+        public async Task<TaskTodo?> UpdateTaskPartial(int id, TaskTodoDto partialDto)
+        {
             _logger.LogDebug("Changing task with id: {id}", id);
 
             var task = await _context.TaskTodos.FindAsync(id);

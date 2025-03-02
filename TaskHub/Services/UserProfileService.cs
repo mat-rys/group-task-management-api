@@ -25,6 +25,7 @@ namespace TaskHub.Services
 
         public async Task<UserProfile?> RegisterUser(UserProfileDto userProfileDto)
         {
+            _logger.LogDebug("Registering user: {userProfileDto)}", userProfileDto);
             try
             {
                 if (userProfileDto == null)
@@ -54,18 +55,22 @@ namespace TaskHub.Services
         }
 
         public async Task<string?> LoginUser(UserProfileDto userProfileDto)
-        {      
+        {
+            _logger.LogDebug("Logging user: {userProfileDto)}", userProfileDto);
             var userProfile = await _context.UserProfiles.FirstOrDefaultAsync(u => u.UserName == userProfileDto.UserName);
 
             if (userProfile == null || new PasswordHasher<UserProfile>().VerifyHashedPassword(userProfile, userProfile.PasswordHash,
-                userProfileDto.Password) == PasswordVerificationResult.Failed) 
-                throw new UnauthorizedAccessException("Invalid username or password.");
+                userProfileDto.Password) == PasswordVerificationResult.Failed){
 
+                _logger.LogDebug("Token was not generated due to invalid data");
+                throw new UnauthorizedAccessException("Invalid username or password.");
+            }
+            _logger.LogInformation("Token generated successfully.");
             return GenerateToken(userProfile);
         }
 
         private string GenerateToken(UserProfile userProfile)
-        {
+        {  
             var claims = new List<Claim>
             {
                 new(ClaimTypes.Name,userProfile.UserName),

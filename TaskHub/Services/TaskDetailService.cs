@@ -11,19 +11,22 @@ namespace TaskHub.Services
         private readonly TaskHubContext _context;
         private readonly ILogger<TaskDetailService> _logger;
 
-        public TaskDetailService(TaskHubContext context, ILogger<TaskDetailService> logger){
+        public TaskDetailService(TaskHubContext context, ILogger<TaskDetailService> logger)
+        {
             _context = context;
             _logger = logger;
         }
 
-        public async Task<TaskTodoDetail?> GetDetailsOfTask(int taskId){
+        public async Task<TaskTodoDetail?> GetDetailsOfTask(int taskId)
+        {
             _logger.LogDebug("Fetching detail for task with ID: {taskId}", taskId);
             
             return await _context.TaskTodoDetails
                 .SingleOrDefaultAsync(t => t.TaskTodo.Id == taskId);
         }
 
-        public async Task<TaskTodoDetail?> CreateDetailsForTask(int taskId, TaskTodoDetailsDto taskTodoDetailsDto){
+        public async Task<TaskTodoDetail?> CreateDetailsForTask(int taskId, TaskTodoDetailsDto taskTodoDetailsDto)
+        {
             _logger.LogDebug("Creating details for task with Id: {taskId}", taskId);
 
             TaskTodoDetail taskTodoDetail = new(){ 
@@ -45,7 +48,8 @@ namespace TaskHub.Services
             return taskTodoDetail;
         }
 
-        public async Task<TaskTodoDetail?> EditTaskDetails(int taskDetailsId, TaskTodoDetailsDto taskTodoDetailsDto){
+        public async Task<TaskTodoDetail?> EditTaskDetails(int taskDetailsId, TaskTodoDetailsDto taskTodoDetailsDto)
+        {
             _logger.LogDebug("Editing details of details ID: {taskDetailsId}", taskDetailsId);
 
             var taskDetails = await _context.TaskTodoDetails

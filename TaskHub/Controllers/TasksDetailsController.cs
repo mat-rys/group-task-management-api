@@ -16,15 +16,17 @@ namespace TaskHub.Controllers
     {
         private readonly ITaskDetailService _taskTodoService;
 
-        public TasksDetailsController(ITaskDetailService taskTodoService){
+        public TasksDetailsController(ITaskDetailService taskTodoService)
+        {
             _taskTodoService = taskTodoService;
         }
 
-        //get Taskdetails by foreignkey taskId
+        
         [Authorize(Roles = "LEADER,USER")]
         [HttpGet("{taskId}")]
-        public async Task<IActionResult> GetDetailsOfTask(int taskId) {
-           
+        [EndpointSummary("Get detail for task.")]
+        public async Task<IActionResult> GetDetailsOfTask(int taskId)
+        {
             if (taskId <= 0)
                 return BadRequest("Invalid task ID.");
             
@@ -35,9 +37,9 @@ namespace TaskHub.Controllers
                 : Ok(details);
         }
 
-        //post task details
-        [HttpPost("{taskId}")]
         [Authorize(Roles = "LEADER")]
+        [HttpPost("{taskId}")]
+        [EndpointSummary("Create details for task, and connect with keys.")]
         public async Task<IActionResult> CreateDetailsForTask(int taskId, [FromBody] TaskTodoDetailsDto taskTodoDetailsDto)
         {
             if (taskId <= 0 || taskTodoDetailsDto == null)
@@ -50,9 +52,10 @@ namespace TaskHub.Controllers
               : CreatedAtAction(nameof(CreateDetailsForTask), taskDetail);
         }
 
-        //put task details
-        [HttpPut("{taskDetailsId}")]
+
         [Authorize(Roles = "LEADER")]
+        [HttpPut("{taskDetailsId}")]
+        [EndpointSummary("Update detail values for task.")]
         public async Task<IActionResult> EditTaskDetails(int taskDetailsId, [FromBody] TaskTodoDetailsDto taskTodoDetailsDto)
         {
             if (taskDetailsId <= 0 || taskTodoDetailsDto == null)

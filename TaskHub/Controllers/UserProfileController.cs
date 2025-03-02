@@ -20,12 +20,10 @@ namespace TaskHub.Controllers
     [ApiController]
     public class UserProfileController : ControllerBase
     {
-        private readonly ILogger<UserProfileController> _logger;
         private readonly UserProfileService _userProfileService;
 
-        public UserProfileController(ILogger<UserProfileController> logger, UserProfileService userProfileService)
+        public UserProfileController(UserProfileService userProfileService)
         {
-            _logger = logger;
             _userProfileService = userProfileService;
         }
 
@@ -33,9 +31,7 @@ namespace TaskHub.Controllers
         [EndpointSummary("Register new user.")]
         public async Task<ActionResult<UserProfile>> Register(UserProfileDto userProfileDto)
         {
-            _logger.LogDebug("Registering user: {userProfileDto)}", userProfileDto);
             var userProfile = await _userProfileService.RegisterUser(userProfileDto);
-
             return userProfile is null
              ? BadRequest()
              : Ok();
@@ -46,7 +42,6 @@ namespace TaskHub.Controllers
         [EndpointSummary("Logs in a user and returns a JWT token.")]
         public async Task<ActionResult<string>> Login(UserProfileDto userProfileDto)
         {
-            _logger.LogDebug("Logging user: {userProfileDto)}", userProfileDto);
             if (userProfileDto == null)
                 return BadRequest("Invalid user data");
 
