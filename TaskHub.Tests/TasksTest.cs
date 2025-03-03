@@ -38,7 +38,7 @@ namespace TaskHub.Tests
 
             // Assert
             var okResult = Assert.IsType<OkObjectResult>(result);
-            var returnedTasks = Assert.IsType<IEnumerable<TaskTodo>>(okResult.Value);
+            var returnedTasks = Assert.IsType<List<TaskTodo>>(okResult.Value);
             Assert.Equal(2, returnedTasks.Count());
         }
 

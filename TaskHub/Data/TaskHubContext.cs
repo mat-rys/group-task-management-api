@@ -6,13 +6,11 @@ namespace TaskHub.Data
     public class TaskHubContext : DbContext
     {
         public TaskHubContext(DbContextOptions<TaskHubContext> options)
-            : base(options) 
-        {
+            : base(options) {
         }
         public DbSet<UserProfile> UserProfiles { get; set; } =  default!;
         public DbSet<TaskTodo> TaskTodos { get; set; } = default!;
         public DbSet<TaskTodoDetail> TaskTodoDetails { get; set; } = default!;
-
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
@@ -29,7 +27,6 @@ namespace TaskHub.Data
                 .WithOne(d => d.TaskTodo)
                 .HasForeignKey<TaskTodo>(d => d.TaskDetailId)
                 .OnDelete(DeleteBehavior.Cascade);
-            
         }
     }
 

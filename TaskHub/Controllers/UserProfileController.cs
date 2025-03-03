@@ -37,7 +37,6 @@ namespace TaskHub.Controllers
              : Ok();
         }
 
-
         [HttpPost("login")]
         [EndpointSummary("Logs in a user and returns a JWT token.")]
         public async Task<ActionResult<string>> Login(UserProfileDto userProfileDto)

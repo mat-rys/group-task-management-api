@@ -21,7 +21,6 @@ namespace TaskHub.Controllers
             _taskTodoService = taskTodoService;
         }
 
-        
         [Authorize(Roles = "LEADER,USER")]
         [HttpGet("{taskId}")]
         [EndpointSummary("Get detail for task.")]
@@ -51,7 +50,6 @@ namespace TaskHub.Controllers
               ? BadRequest("Invalid task data")
               : CreatedAtAction(nameof(CreateDetailsForTask), taskDetail);
         }
-
 
         [Authorize(Roles = "LEADER")]
         [HttpPut("{taskDetailsId}")]
