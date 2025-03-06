@@ -29,6 +29,7 @@ namespace TaskHub.Services
             var userProfile = await _context.UserProfiles
                 .Include(u => u.Tasks)
                 .FirstOrDefaultAsync(u => u.UserName == userName);
+
             if (userProfile == null){
                 _logger.LogWarning("Task to delete was not found");
                 return false;
@@ -55,7 +56,6 @@ namespace TaskHub.Services
                 return false;
             }
                
-                
             task.UserProfiles.Clear();
             await _context.SaveChangesAsync();
 

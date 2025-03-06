@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Identity;
+﻿using Mapster;
+using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.IdentityModel.Tokens;
@@ -31,11 +32,7 @@ namespace TaskHub.Services
                 if (userProfileDto == null)
                     throw new ArgumentNullException(nameof(userProfileDto), "User profile data cannot be null.");
 
-                UserProfile userProfile = new()
-                {
-                    UserName = userProfileDto.UserName,
-                    Role = userProfileDto.Role
-                };
+                UserProfile userProfile = userProfileDto.Adapt<UserProfile>();
 
                 var passwordHasher = new PasswordHasher<UserProfile>();
                 userProfile.PasswordHash = passwordHasher.HashPassword(userProfile, userProfileDto.Password);

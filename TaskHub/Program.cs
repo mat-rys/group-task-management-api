@@ -1,7 +1,9 @@
+using Mapster;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.IdentityModel.Tokens;
 using Scalar.AspNetCore;
+using System.Reflection;
 using System.Text;
 using TaskHub.Data;
 using TaskHub.Services;
@@ -33,6 +35,10 @@ builder.Services.AddScoped<TaskService>();
 builder.Services.AddScoped<ITaskDetailService,TaskDetailService>();
 builder.Services.AddScoped<TaskDetailService>();
 builder.Services.AddOpenApi();
+
+//Mapster
+builder.Services.AddSingleton(TypeAdapterConfig.GlobalSettings);
+TypeAdapterConfig.GlobalSettings.Scan(Assembly.GetExecutingAssembly());
 
 var app = builder.Build();
 

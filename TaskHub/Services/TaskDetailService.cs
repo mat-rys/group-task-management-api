@@ -1,4 +1,5 @@
-﻿using Microsoft.EntityFrameworkCore;
+﻿using Mapster;
+using Microsoft.EntityFrameworkCore;
 using System.Threading.Tasks;
 using TaskHub.Data;
 using TaskHub.Entities;
@@ -29,11 +30,7 @@ namespace TaskHub.Services
         {
             _logger.LogDebug("Creating details for task with Id: {taskId}", taskId);
 
-            TaskTodoDetail taskTodoDetail = new(){ 
-                Deadline = taskTodoDetailsDto.Deadline,
-                Priority = taskTodoDetailsDto.Priority,
-                Status = taskTodoDetailsDto.Status,
-            };
+            TaskTodoDetail taskTodoDetail = taskTodoDetailsDto.Adapt<TaskTodoDetail>();
 
             var task = await _context.TaskTodos
                 .SingleOrDefaultAsync(d => d.Id == taskId);
