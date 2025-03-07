@@ -16,5 +16,8 @@ namespace TaskHub.Entities
 
         [JsonIgnore]
         public List<TaskTodo>? Tasks { get; set; }
+
+        public List<TaskComment>? TaskComments { get; set; }
+
     }
 }
