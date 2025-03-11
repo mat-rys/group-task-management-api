@@ -7,7 +7,7 @@ using TaskHub.Models;
 
 namespace TaskHub.Services
 {
-    public class TaskCommentService : ITaskCommentServicee
+    public class TaskCommentService : ITaskCommentService
     {
         private readonly TaskHubContext _context;
         private readonly ILogger<TaskService> _logger;

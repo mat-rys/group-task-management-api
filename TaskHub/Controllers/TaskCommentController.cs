@@ -15,9 +15,9 @@ namespace TaskHub.Controllers
     [ApiController]
     public class TaskCommentController : ControllerBase
     {
-        private readonly TaskCommentService _taskCommentService;
+        private readonly ITaskCommentService _taskCommentService;
 
-        public TaskCommentController(TaskCommentService taskCommentService)
+        public TaskCommentController(ITaskCommentService taskCommentService)
         {
             _taskCommentService = taskCommentService;
         }
@@ -41,7 +41,7 @@ namespace TaskHub.Controllers
         }
 
         [HttpGet("task/{taskId}")]
-        public async Task<ActionResult<IEnumerable<TaskComment>>> GetCommentsByTask(int taskId)
+        public async Task<ActionResult> GetCommentsByTask(int taskId)
         {
             var comments = await _taskCommentService.GetCommentsByTask(taskId);
             return comments is null

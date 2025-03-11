@@ -4,7 +4,7 @@ using TaskHub.Models;
 
 namespace TaskHub.Services
 {
-    public interface ITaskCommentServicee
+    public interface ITaskCommentService
     {
         Task<TaskComment?> PostNewComment(int taskId, string userId, TaskCommentDto taskCommentDto);
         Task<TaskComment?> GetCommentById(int commentId);
