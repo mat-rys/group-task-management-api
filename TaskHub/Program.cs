@@ -34,6 +34,8 @@ builder.Services.AddScoped<ITaskService, TaskService>();
 builder.Services.AddScoped<TaskService>();
 builder.Services.AddScoped<ITaskDetailService,TaskDetailService>();
 builder.Services.AddScoped<TaskDetailService>();
+builder.Services.AddScoped<ITaskCommentServicee, TaskCommentService>();
+builder.Services.AddScoped<TaskCommentService>();
 builder.Services.AddOpenApi();
 
 //Mapster

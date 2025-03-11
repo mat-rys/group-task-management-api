@@ -10,7 +10,7 @@ using TaskHub.Services;
 
 namespace TaskHub.Controllers
 {
-    [Route("api/taskDetails")]
+    [Route("api/details")]
     [ApiController]
     public class TasksDetailsController : ControllerBase
     {

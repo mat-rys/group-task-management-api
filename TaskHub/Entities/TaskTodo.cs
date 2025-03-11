@@ -12,6 +12,7 @@ namespace TaskHub.Entities
         public int? TaskDetailId { get; set; }
         public TaskTodoDetail? TaskDetail { get; set; }
         public List<UserProfile>? UserProfiles { get; set; }
+        [JsonIgnore]
         public List<TaskComment>? TaskComments { get; set; }
     }
 }

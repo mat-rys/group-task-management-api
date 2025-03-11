@@ -10,8 +10,10 @@ namespace TaskHub.Entities
         public string Content { get; set; } = string.Empty;
         public DateTime CreatedAt { get; set; } = DateTime.UtcNow;
         [JsonIgnore]
-        public required TaskTodo TaskTodo { get; set; }
+        [Required]
+        public TaskTodo TaskTodo { get; set; }
         [JsonIgnore]
-        public required UserProfile UserProfile { get; set; }  
+        [Required]
+        public UserProfile UserProfile { get; set; }  
     }
 }
