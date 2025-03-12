@@ -1,9 +1,6 @@
 ﻿using Microsoft.AspNetCore.Mvc;
-using Microsoft.EntityFrameworkCore.Internal;
-using Microsoft.Extensions.Logging;
 using Moq;
 using TaskHub.Controllers;
-using TaskHub.Data;
 using TaskHub.Entities;
 using TaskHub.Models;
 using TaskHub.Services;

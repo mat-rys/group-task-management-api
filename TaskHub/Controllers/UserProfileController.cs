@@ -1,5 +1,6 @@
 ﻿using Azure.Core;
 using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Cors;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
@@ -16,6 +17,7 @@ using TaskHub.Services;
 
 namespace TaskHub.Controllers
 {
+    [EnableCors]
     [Route("api/[controller]")]
     [ApiController]
     public class UserProfileController : ControllerBase

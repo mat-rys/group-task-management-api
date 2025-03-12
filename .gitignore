@@ -1,3 +1,4 @@
+
 # Ignorowanie folderów
 TaskHub/migrations/
 .github/
@@ -13,3 +14,14 @@ TaskHub/migrations/
 # Ignorowanie plików systemowych
 Thumbs.db
 .DS_Store
+
+# Ignorowanie Angulara i Node.js
+node_modules/
+dist/
+out-tsc/
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+package-lock.json
+yarn.lock
+.angular/

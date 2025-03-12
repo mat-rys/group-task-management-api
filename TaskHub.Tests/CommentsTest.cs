@@ -1,10 +1,5 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using Moq;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using TaskHub.Controllers;
 using TaskHub.Entities;
 using TaskHub.Models;
@@ -97,6 +92,7 @@ namespace TaskHub.Tests
         [Fact]
         public async Task PostNewCommentForTask_ReturnCreatedAtAction_WhenCommentCreated()
         {
+            //Arrange
             TaskCommentDto contentSendedToUpdate = new() { Content = "NewComment" };
             TaskComment taskComment = new() {
                 Id = 1,

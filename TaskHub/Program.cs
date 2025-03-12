@@ -1,5 +1,6 @@
 using Mapster;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
+using Microsoft.AspNetCore.Cors.Infrastructure;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.IdentityModel.Tokens;
 using Scalar.AspNetCore;
@@ -9,6 +10,19 @@ using TaskHub.Data;
 using TaskHub.Services;
 
 var builder = WebApplication.CreateBuilder(args);
+
+builder.Services.AddCors(options =>
+{
+    options.AddPolicy("CorsPolicy", policyBuilder =>
+    {
+        policyBuilder.AllowAnyHeader()
+                     .AllowAnyMethod()
+                     .WithOrigins("http://localhost:4200", 
+                                 "https://localhost:4200"); // Allow both HTTP and HTTPS origins
+    });
+});
+
+
 builder.Services.AddDbContext<TaskHubContext>(options =>
     options.UseSqlServer(builder.Configuration.GetConnectionString("taskHubContext") ?? throw new InvalidOperationException("Connection string 'taskHubContext' not found.")));
 
@@ -27,6 +41,8 @@ builder.Services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme)
             ValidateIssuerSigningKey = true
         };
     });
+
+
 
 builder.Services.AddControllers();
 builder.Services.AddScoped<UserProfileService>();
@@ -51,6 +67,9 @@ if (app.Environment.IsDevelopment())
 }
 
 app.UseHttpsRedirection();
+
+
+app.UseCors("CorsPolicy");
 
 app.UseAuthorization();
 
