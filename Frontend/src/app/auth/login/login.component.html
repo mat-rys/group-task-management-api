@@ -1,2 +1,12 @@
-<p>login works!</p>
-
+<div>
+    <form (ngSubmit)="loginUser(creditentials)">
+        <label for="username">Username</label>
+        <input type="text" name="username" [(ngModel)]="creditentials.username">
+        <br>
+        <label for="password">Password</label>
+        <input type="text" name="password" [(ngModel)]="creditentials.password">
+        <br>
+        <button type="submit">Click to login</button>
+    </form>
+</div>
+<a href="/registration"><button><i></i> Registration page </button></a>
